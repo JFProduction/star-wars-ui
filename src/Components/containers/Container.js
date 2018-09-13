@@ -4,6 +4,7 @@ import MainCard from './MainCard';
 import { icons, Height, Gender, Mass, Default } from '../../assets/icons';
 import SimpleCardSubInfo from '../presentations/SimpleCardSubInfo'
 import Loading from '../presentations/Loading'
+import PageNav from '../presentations/PageNav'
 
 class Container extends Component {
   constructor(props) {
@@ -51,44 +52,22 @@ class Container extends Component {
   }
   
   render() {
+    const {
+      prev,
+      next,
+      page,
+      loading
+    } = this.state
+
     return (
       <div>
-        <div style={{ margin: 10, display: "flex", textAlign: "center" }}>
-          <div style={{ width: 100+"%" }}>
-          {
-            this.state.prev !== "" && !this.state.loading &&
-              <button
-                class="btn"
-                onClick={this.clickNextPrev(-1)}
-                title="Next"
-              >
-                prev
-              </button>
-          }
-          </div>
-          <div
-            style={{ width: 100+"%" }}
-          >
-          {
-            !this.state.loading && this.state.page > 0 &&
-              <span>Viewing Page {this.state.page}</span>
-          }
-          </div>
-          <div
-            style={{ width: 100+"%" }}
-          >
-          {
-            this.state.next !== "" && !this.state.loading && 
-              <button 
-                class="btn"
-                onClick={this.clickNextPrev(1)}
-                title="Next"
-              >
-                next
-              </button>
-          }
-          </div>
-        </div>
+        <PageNav
+          onClick={this.clickNextPrev}
+          prev={prev}
+          next={next}
+          page={page}
+          loading={loading}
+        />
       {
         this.state.people.length > 0 && !this.state.loading ?
           this.state.people.map((person, i) => {
