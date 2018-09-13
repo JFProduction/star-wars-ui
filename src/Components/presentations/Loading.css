@@ -1,0 +1,61 @@
+.wrapper {
+  text-align: center;
+  margin-top: 10%;
+}
+
+.bouncer {
+  display: inline-block;
+  width: 3px;
+  margin-right: 4px;
+  height: 20px;
+}
+
+.lbl {
+  font-family: 'Varela Round', sans-serif;
+  margin-top: 20px;
+}
+
+.one {
+  display: inline-block;
+  width: 3px;
+  margin-right: 4px;
+  height: 20px;
+  background: #ff5252; 
+  animation: bounce 1s ease-in-out infinite;
+}
+
+.two {
+  display: inline-block;
+  width: 3px;
+  margin-right: 4px;
+  height: 20px;
+  background: #333;
+  animation: bounce 1s ease-in-out 200ms infinite;
+}
+
+.three {
+  display: inline-block;
+  width: 3px;
+  margin-right: 4px;
+  height: 20px;
+  background: #56a3a6;
+  animation: bounce 1s ease-in-out 300ms infinite;
+}
+
+.four {
+  display: inline-block;
+  width: 3px;
+  margin-right: 4px;
+  height: 20px;
+  background: #ffb300;
+  animation: bounce 1s ease-in-out 400ms infinite;
+}
+
+@keyframes bounce {
+  0%, 30%, 100% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(2.5);
+  }
+}
