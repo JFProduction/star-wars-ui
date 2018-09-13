@@ -52,55 +52,43 @@ class Container extends Component {
   
   render() {
     return (
-      <div
-        style={{
-          position: "relative"
-        }}
-      >
-        {this.state.next !== "" && !this.state.loading && 
-          <button 
-            onClick={this.clickNextPrev(1)}
-            style={{
-              position: "absolute",
-              top: -30,
-              right: 76,
-              background: "none",
-              border: "none",
-              fontWeight: 500,
-              fontSize: 25
-            }}
-            title="Next"
-          >
-            &rarr;
-          </button>
-        }
-        { !this.state.loading && this.state.page > 0 &&
+      <div>
+        <div style={{ margin: 10, display: "flex", textAlign: "center" }}>
+          <div style={{ width: 100+"%" }}>
+          {
+            this.state.prev !== "" && !this.state.loading &&
+              <button
+                class="btn"
+                onClick={this.clickNextPrev(-1)}
+                title="Next"
+              >
+                prev
+              </button>
+          }
+          </div>
           <div
-            style={{
-              position: "absolute",
-              marginTop: -20,
-              left: 50+"%",
-              right: 50+"%",
-              width: 200
-            }}
-          >Viewing Page {this.state.page}</div>}
-        {this.state.prev !== "" && !this.state.loading && 
-          <button 
-            onClick={this.clickNextPrev(-1)}
-            style={{
-              position: "absolute",
-              top: -30,
-              left: 0,
-              background: "none",
-              border: "none",
-              fontWeight: 500,
-              fontSize: 25
-            }}
-            title="Next"
+            style={{ width: 100+"%" }}
           >
-            &larr;
-          </button>
-        }
+          {
+            !this.state.loading && this.state.page > 0 &&
+              <span>Viewing Page {this.state.page}</span>
+          }
+          </div>
+          <div
+            style={{ width: 100+"%" }}
+          >
+          {
+            this.state.next !== "" && !this.state.loading && 
+              <button 
+                class="btn"
+                onClick={this.clickNextPrev(1)}
+                title="Next"
+              >
+                next
+              </button>
+          }
+          </div>
+        </div>
       {
         this.state.people.length > 0 && !this.state.loading ?
           this.state.people.map((person, i) => {

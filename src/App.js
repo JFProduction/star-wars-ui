@@ -8,12 +8,12 @@ class App extends Component {
     return (
       <div
         style={{
-          maxWidth: 1200,
+          maxWidth: 1132,
           margin: "0 auto",
           marginTop: 50
         }}
       >
-        <h1>Star Wars Info</h1>
+        <h1 style={{marginBottom: 10}}>Star Wars Info</h1>
         <Container />
       </div>
     );

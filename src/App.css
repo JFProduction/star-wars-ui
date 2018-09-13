@@ -32,3 +32,25 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.btn {
+  background: #fff;
+  border-radius: 5px;
+  font-size: 15px;
+  border: none;
+}
+
+.btn:focus,
+.btn:active {
+ outline: none;
+ box-shadow: none;
+}
+
+.card:hover,
+.list-item:hover,
+.btn:hover {
+/*  background: #eff2f3; */
+ background: #EBECF0;
+ cursor: pointer;
+ color: #333;
+}
