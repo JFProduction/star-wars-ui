@@ -27,7 +27,7 @@ const icons = {
   "Yoda": Yoda,
   "Boba Fett": BobaFett,
   "Jar Jar Binks": JarJar,
-  "C3PO": C3PO,
+  "C-3PO": C3PO,
   "BB8": BB8,
   "Chewbacca": Chewy
 }

@@ -5,6 +5,7 @@ import { icons, Height, Gender, Mass, Default } from '../../assets/icons';
 import SimpleCardSubInfo from '../presentations/SimpleCardSubInfo'
 import Loading from '../presentations/Loading'
 import PageNav from '../presentations/PageNav'
+import MyModal from './MyModal';
 
 class Container extends Component {
   constructor(props) {
@@ -14,7 +15,8 @@ class Container extends Component {
       next: "",
       prev: "",
       loading: false,
-      page: 0
+      page: 0,
+      selectedPerson: {}
     }
   }
 
@@ -29,7 +31,7 @@ class Container extends Component {
 
   handleCardClick = id => () => {
     let person = this.state.people.filter(p => p.name === id)[0]
-    console.log(person)
+    this.setState({selectedPerson: person})
   }
 
   clickNextPrev = which => _ => {
@@ -50,13 +52,18 @@ class Container extends Component {
       })
       .catch(err => console.log(err))
   }
+
+  handleClose = () => {
+    this.setState({selectedPerson: {}})
+  }
   
   render() {
     const {
       prev,
       next,
       page,
-      loading
+      loading,
+      selectedPerson
     } = this.state
 
     return (
@@ -68,6 +75,14 @@ class Container extends Component {
           page={page}
           loading={loading}
         />
+      {
+        selectedPerson.films && 
+          <MyModal
+            handleClose={this.handleClose}
+            open={!!selectedPerson.films}
+            person={selectedPerson}
+          />
+      }
       {
         this.state.people.length > 0 && !this.state.loading ?
           this.state.people.map((person, i) => {

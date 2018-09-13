@@ -1,10 +1,10 @@
 const Utils = {
-  get: (url) => {
+  get: function(url) {
     return fetch(url)
       .then(resp => resp.json())
   },
 
-  post: (url, body, headers) => {
+  post: function(url, body, headers) {
     body = JSON.stringify(body)
 
     return fetch(url, {
@@ -15,7 +15,7 @@ const Utils = {
       },
       body
     }).then(resp => resp.json())
-  }
+  },
 }
 
 export {
