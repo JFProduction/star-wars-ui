@@ -17,12 +17,17 @@
   to { transform: rotate(360deg); }
 }
 
-.btn {
+.btn,
+.view-btn {
   background: #fff;
   border-radius: 5px;
   font-size: 15px;
   border: none;
   padding: 5px;
+}
+
+.view-btn {
+  margin: 5px;
 }
 
 .btn:focus,
@@ -33,7 +38,8 @@
 
 .card:hover,
 .list-item:hover,
-.btn:hover {
+.btn:hover,
+.view-btn:hover {
 /*  background: #eff2f3; */
  background: #EBECF0;
  cursor: pointer;

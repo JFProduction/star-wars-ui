@@ -16,6 +16,11 @@ import C3PO from './c3po.png'
 import BB8 from './bb8.png'
 import Chewy from './chewy.png'
 
+import IconCardviewActive from './Icon-Cardview-Active.svg'
+import IconCardview from './Icon-Cardview.svg'
+import IconListViewActive from './Icon-Listview-Active.svg'
+import IconListView from './Icon-Listview.svg'
+
 const icons = {
   "Luke Skywalker": Luke,
   "Obi-Wan Kenobi": Obi,
@@ -37,5 +42,9 @@ export {
   Height,
   Gender,
   Mass,
-  Default
+  Default,
+  IconListViewActive,
+  IconListView,
+  IconCardviewActive,
+  IconCardview
 }

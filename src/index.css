@@ -1,5 +1,53 @@
+@import './Components/presentations/css/colors/_defaults.css';
+@import './Components/presentations/css/_defaults.css';
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+    font-family: 'Roboto';
+    font-size: 14px;
+    color: #444854;
+    cursor: default;
+    padding: 0;
+    margin: 0;
+}
+
+body > div {
+    height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+main {
+    position: absolute;
+    display: flex;
+    top: var(--page-header-height);
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    transition: .75s all;
+}
+
+main > div {
+    flex: 1 0 1px;
+    background-color: var(--silver-alt);
+}
+
+input:focus {
+    outline: none;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+ul > li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
