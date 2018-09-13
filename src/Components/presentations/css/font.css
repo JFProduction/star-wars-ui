@@ -1,0 +1,40 @@
+.thin,
+.hairline {
+    font-weight: 100;
+}
+
+.extra-light,
+.ultra-light {
+    font-weight: 200;
+}
+
+.light {
+    font-weight: 300;
+}
+
+.normal {
+    font-weight: 400;
+}
+
+.medium {
+    font-weight: 500;
+}
+
+.semi-bold,
+.demi-bold {
+    font-weight: 600;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.extra-bold,
+.ultra-bold {
+    font-weight: 800;
+}
+
+.black,
+.heavy {
+    font-weight: 900;
+}

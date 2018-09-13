@@ -1,13 +1,17 @@
 import React from 'react'
 import ReactModal from 'react-modal'
 import moment from 'moment'
-import { icons } from '../../assets/icons';
+import { icons, Default } from '../../assets/icons';
+
+import './Modal.css'
 
 ReactModal.setAppElement("body")
 
 const ModalPres = ({open, handleClose, info}) => (
   <ReactModal
     isOpen={open}
+    className="Modal"
+    overlayClassName="Overlay"
   >
     <button 
       className="btn" 
@@ -25,19 +29,25 @@ const ModalPres = ({open, handleClose, info}) => (
         padding: 20
       }}
     >
-      <img 
-        width={140}
-        src={icons[info.person.name]} 
-        alt="Avatar"
-      />
-      <h2>{info.person.name}</h2>
+      <div
+        style={{
+          textAlign: "center"
+        }}
+      >
+        <img 
+          width={140}
+          src={icons[info.person.name] || Default} 
+          alt="Avatar"
+        />
+        <h2>{info.person.name}</h2>
+      </div>
       <h4>Casted In:</h4>
       {
-        info.films.map((f, i) => 
-          <p key={i}>
-            Ep. {f.episode_id} {f.title}
-            <div>Made: {moment(f.created, "YYYY-MM-DD").format("MMM DD, YYYY")}</div>
-          </p>
+        info.films.sort((a, b) => a.release_date > b.release_date).map((f, i) => 
+          <div key={i} style={{marginBottom: 10}}>
+            <div style={{fontWeight: 500}}>Ep. {f.episode_id} {f.title}</div>
+            <div style={{fontSize: 12}}>{moment(f.release_date, "YYYY-MM-DD").format("MMM DD, YYYY")}</div>
+          </div>
         )
       }
     </div>

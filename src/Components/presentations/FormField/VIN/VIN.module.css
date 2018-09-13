@@ -1,0 +1,8 @@
+.text {
+    composes: text from '../FormField.module.css';
+    font-size: 35px;
+    letter-spacing: 10px;
+    line-height: 36px;
+    text-align: center;
+    text-transform: uppercase;
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Icons/Notification Information</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M12,0 C5.38338462,0 0,5.38301538 0,12 C0,18.6169846 5.38338462,24 12,24 C18.6166154,24 24,18.6169846 24,12 C24,5.38301538 18.6166154,0 12,0 L12,0 Z M12.1184617,21.7615385 C6.67059492,21.7615385 2.23846154,17.3825466 2.23846154,12 C2.23846154,6.61745344 6.67059492,2.23846154 12.1184617,2.23846154 C17.5663284,2.23846154 21.9984618,6.61745344 21.9984618,12 C21.9984618,17.3825466 17.5663284,21.7615385 12.1184617,21.7615385 Z M12.0355031,8.45021538 C12.7176172,8.45021538 13.27058,7.89725261 13.27058,7.21513846 C13.27058,6.53302431 12.7176172,5.98006154 12.0355031,5.98006154 C11.3533889,5.98006154 10.8004261,6.53302431 10.8004261,7.21513846 C10.8004261,7.89725261 11.3533889,8.45021538 12.0355031,8.45021538 Z M11.8659692,10.4647385 C11.4583385,10.4647385 11.1275077,10.7955692 11.1275077,11.2032 L11.1275077,17.4801231 C11.1275077,17.8877538 11.4583385,18.2185846 11.8659692,18.2185846 C12.2736,18.2185846 12.6044308,17.8877538 12.6044308,17.4801231 L12.6044308,11.2032 C12.6044308,10.7952 12.2736,10.4647385 11.8659692,10.4647385 Z" id="path-1"></path>
+    </defs>
+    <g id="Notifications" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-289.000000, -265.000000)" id="Icons/Notification-Information">
+            <g transform="translate(289.000000, 265.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="icon-rounded-outline-warning" fill="#D0021B" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <g id="🎨Color/Saffron" mask="url(#mask-2)" fill-rule="evenodd" fill="#F7B617">
+                    <rect id="bg" x="0" y="0" width="24" height="24"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

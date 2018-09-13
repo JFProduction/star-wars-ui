@@ -1,0 +1,11 @@
+﻿.yearView {
+    composes: content from '../Calendar.module.css';
+}
+
+.month {
+    composes: medium from '../../../../css/font.css';
+    composes: flex align-center justify-center from '../../../../css/flex.css';
+    text-transform: uppercase;
+    flex: 0 0 25%;
+    padding: 5px;
+}

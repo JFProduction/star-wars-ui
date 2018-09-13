@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="18px" viewBox="0 0 24 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>ED125383-FAE5-45CA-A4A5-CC9C39EA374A</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <path d="M24,11.9999791 C24,11.7807584 23.8708146,11.4896798 23.7397368,11.3484274 L16.355213,3.29568466 C16.0104416,2.92985889 15.4518842,2.88746422 15.0499278,3.25873735 C14.6905717,3.59064738 14.6816178,4.23798326 15.0139276,4.59840904 L20.9417344,11.0524226 L0.923082781,11.0524226 C0.413264161,11.0524226 0,11.4765588 0,11.9997896 C0,12.5230204 0.413264161,12.947204 0.923082781,12.947204 L20.9417344,12.947204 L15.0139276,19.4012365 C14.6816639,19.7616149 14.7052487,20.393035 15.0499278,20.7408608 C15.4138532,21.1080603 16.0157032,21.0753761 16.355213,20.7039135 L23.7397368,12.6511992 C23.9567074,12.4327837 23.9963538,12.2224209 24,11.9999791 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/Arrow-Left" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(0.000000, -3.000000)">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="icon--arrow" fill="#6D7881" fill-rule="nonzero" transform="translate(12.000000, 12.000000) scale(-1, 1) translate(-12.000000, -12.000000) " xlink:href="#path-1"></use>
+    </g>
+</svg>

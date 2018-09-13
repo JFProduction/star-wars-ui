@@ -4,9 +4,12 @@
   left: 40px;
   right: 40px;
   bottom: 40px;
-  width: 50%;
-  height: 500px;
+  background-color: #fff;
+  width: 30%;
   margin: 0 auto;
+  height: 700px;
+  outline: none;
+  border-radius: 5px;
 }
 
 .Overlay {

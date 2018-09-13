@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="10px" viewBox="0 0 12 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>icon--chevron-down copy 7</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="270.41 6 275 10.9446694 279.59 6 281 7.52226721 275 14 269 7.52226721"></polygon>
+    </defs>
+    <g id="Invision" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Editable-cells-and-dropdowns-within-tables" transform="translate(-1191.000000, -1976.000000)">
+            <g id="Group-3-Copy" transform="translate(207.000000, 1563.000000)">
+                <g id="Group-2">
+                    <g id="Group-Copy-7" transform="translate(0.000000, 389.000000)">
+                        <g id="Price-Copy-4" transform="translate(715.000000, 18.000000)">
+                            <mask id="mask-2" fill="white">
+                                <use xlink:href="#path-1"></use>
+                            </mask>
+                            <use id="icon--chevron-down-copy-7" fill="#F27E20" transform="translate(275.000000, 10.000000) rotate(-180.000000) translate(-275.000000, -10.000000) " xlink:href="#path-1"></use>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

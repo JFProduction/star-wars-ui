@@ -1,0 +1,9 @@
+/**** Measurent constants ****/
+
+:root {
+    /* Height of the page header */
+    --page-header-height: 60px;
+    
+    /* padding width of a widget's content */
+    --widget-side-width: 24px;
+}
