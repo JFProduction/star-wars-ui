@@ -12,6 +12,9 @@ import Mass from './mass.png'
 import Default from './default.png'
 import BobaFett from './boba-fett.png'
 import JarJar from './jar-jar.png'
+import C3PO from './c3po.png'
+import BB8 from './bb8.png'
+import Chewy from './chewy.png'
 
 const icons = {
   "Luke Skywalker": Luke,
@@ -23,7 +26,10 @@ const icons = {
   "Han Solo": HanSolo,
   "Yoda": Yoda,
   "Boba Fett": BobaFett,
-  "Jar Jar Binks": JarJar
+  "Jar Jar Binks": JarJar,
+  "C3PO": C3PO,
+  "BB8": BB8,
+  "Chewbacca": Chewy
 }
 
 export {
