@@ -1,0 +1,48 @@
+﻿@import '../../../../css/colors/_defaults.css';
+
+.header {
+    composes: flex align-center justify-between from '../../../../css/flex.css';
+    padding: 10px 2.5%;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.titleDecade {
+    composes: medium from '../../../../css/font.css';
+    composes: pointer;
+    letter-spacing: 1px;
+    padding: 6px 14px 4px;
+}
+
+.title {
+    composes: medium from '../../../../css/font.css';
+    composes: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 6px 14px 4px;
+}
+
+.title:hover {
+    background-color: var(--tango-lightest) !important;
+    border-radius: 15px;
+}
+
+.arrow {
+    padding: 10px;
+}
+
+.arrow:hover {
+    background-color: var( --palesky-lightest) !important;
+    border-radius: 50%;
+}
+
+.left {
+    composes: pointer arrow;
+}
+
+.right {
+    composes: pointer arrow;
+    transform: rotate(180deg);
+}

@@ -1,0 +1,75 @@
+﻿@import '../css/colors/_defaults.css';
+
+:root {
+    --width: 4em;
+    --height: calc(var(--width) / 2);
+}
+
+
+.container {
+    composes: flex align-center from '../css/flex.module.css';
+    composes: normal from '../css/font.css';
+    margin: 5px;
+}
+
+
+
+.hidden {
+    display: none;
+}
+
+.switch {
+    composes: iron from '../css/colors/background.css';
+    composes: iron from '../css/colors/borders.css';
+    position: relative;
+    transition: .3s cubic-bezier(.95, .05, .795, .035);
+    width: var(--width);
+    height: calc(var(--height) + 4px);
+    display: inline-block;
+    border: 4px solid;
+    border-radius: 2em;
+}
+
+    .switch:after {
+        transition: .3s cubic-bezier(.95, .05, .795, .035);
+        content: "";
+        width: calc(var(--height) * .90);
+        height: calc(var(--height) * .90);
+        background-color: white;
+        border-radius: 50%;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 3px 3px rgba(0, 0, 0, 0.4);
+        position: absolute;
+        top: -1px;
+        left: 0;
+    }
+
+    .hidden:checked + .switch {
+        border-color: var(--tango) !important;
+        background-color: var(--tango) !important;
+    }
+
+    .hidden:checked + .switch:after {
+        left: calc(2em - 4px);
+    }
+
+
+.label {
+    margin: 0 10px;
+}
+
+.button {
+    composes: flex align-center flex-fill from '../css/flex.css';
+    composes: iron from '../css/colors/borders.css';
+    border: 1px solid;
+    border-radius: 2px;
+    padding: 0 16px;
+    height: 48px;
+    cursor: pointer;
+}
+
+.hidden:checked + .button {
+    background-color: var(--tango);
+    border-color: var(--tango) !important;
+    color: var(--white);
+}
+

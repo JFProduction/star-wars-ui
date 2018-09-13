@@ -1,0 +1,29 @@
+@import './_defaults.css';
+
+.white {
+    border-color: var(--white) !important;
+}
+
+.iron {
+    border-color: var(--iron) !important;
+}
+
+.tango {
+    border-color: var(--tango) !important;
+}
+
+.error {
+    border-color: var(--monza) !important;
+}
+
+.silver {
+    border-color: var(--silver-alt) !important;
+}
+
+.alto {
+    border-color: var(--alto) !important;
+}
+
+.header-column-border {
+    border-color: var(--header-column-border);
+}

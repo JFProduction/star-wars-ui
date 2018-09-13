@@ -1,0 +1,82 @@
+/**** Color constants ****/
+
+:root {
+    /* Shark (Black) */
+    --shark: #1b1e24;
+    --shark-alt: #272a2f;
+    --shark-light: #434851;
+    --shark-lighter: #8d9198;
+    --shark-lightest: #b6b9be;
+    /* Mako (Dark Gray) */
+    --mako: #444854;
+    --mako-light: #6b6f7a;
+    --mako-lighter: #98999d;
+    --mako-lightest: #d1d1d1;
+    /* PaleSky (Gray) */
+    --palesky: #6d7881;
+    --palesky-light: #91999f;
+    --palesky-lighter: #c7c8ca;
+    --palesky-lightest: #e3e3e3;
+    /* Tango (Orange) */
+    --tango-darkest: #be6216;
+    --tango-dark: #e17319;
+    --tango: #f27e20;
+    --tango-light: #faa970;
+    --tango-lightest: #f9e4d5;
+    /* Keppel (Teal) */
+    --keppel-darkest: #1f5c5a;
+    --keppel-dark: #388683;
+    --keppel: #36aba6;
+    --keppel-light: #a4cfcd;
+    --keppel-lightest: #eoecec;
+    /* Grassland (Green) */
+    --grassland-darkest: #325940;
+    --grassland-dark: #28a353;
+    --grassland: #1dbd55;
+    --grassland-light: #bbe5b3;
+    --grassland-lightest: #e3f1df;
+    /* Saffron (Gold) */
+    --saffron-darkest: #a16e05;
+    --saffron-dark: #c89414;
+    --saffron: #f7b617;
+    --saffron-light: #ffdd8a;
+    --saffon-lightest: #faeed5;
+    /* Monza (Red) */
+    --monza-darkest: #5c1019;
+    --monza-dark: #a5091c;
+    --monza: #d0021b;
+    --monza-light: #e3a2aa;
+    --monza-lightest: #ffe0e4;
+    /* BlueSky */
+    --bluesky-darkest: #06197f;
+    --bluesky-dark: #0925ba;
+    --bluesky: #0d31f5;
+    --bluesky-light: #b6c1fc;
+    --bluesky-lightest: #e1e5fd;
+    /* Indigo */
+    --indigo-darkest: #282c45;
+    --indigo-dark: #2b3463;
+    --indigo: #2b387f;
+    --indigo-light: #9ba2ca;
+    --indigo-lightest: #e5e7f2;
+    /* PurpleRain */
+    --purplerain-darkest: #361532;
+    --purplerain-dark: #5c1a54;
+    --purplerain: #992a8c;
+    --purplerain-light: #d0b2cd;
+    --purplerain-lightest: #f3e9f2;
+    /* Whites and off whites */
+    --iron: #cccece;
+    --silver: #ebebeb;
+    --silver-alt: #ededed;
+    --white: #fff;
+    --blacksqeeze: #f5fbfa;
+    --alabaster: #f7f7f7;
+    --athens-gray: #e4e5e8;
+    --alto: #d8d8d8;
+    /* Miscellaneous */
+    --header-column-border: #62656f;
+    --action-header-background: #525662;
+    --zebra-stripe: #f7f8f8;
+    --footer-fee-color: #035f82;
+}

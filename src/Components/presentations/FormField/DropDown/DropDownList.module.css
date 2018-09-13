@@ -1,0 +1,53 @@
+﻿.frame {
+    composes: silver from '../../css/colors/borders.css';
+    composes: white from '../../css/colors/background.css';
+    padding: 8.5px 0;
+    border-radius: 2px;
+    border: 1px solid;
+    box-shadow: 0 0 20px 0 rgba(109,120,129,0.16);
+    overflow-x: auto;
+    z-index: 10;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-top: -22px;
+    max-height: 35vh;
+}
+
+.hidden {
+    composes: frame;
+    display: none;
+}
+
+.baseItem {
+    composes: flex align-center from '../../css/flex.module.css';
+    composes: normal from '../../css/font.css';
+    padding-left: 15px;
+}
+
+
+.item {
+    composes: baseItem;
+    composes: silver from '../../css/colors/borders.css';
+    border-bottom: 1px solid;
+    height: 52px;
+}
+
+.itemHighlight {
+    composes: item;
+    composes: tango from '../../css/colors/foreground.css';
+    composes: alabaster from '../../css/colors/background.css';
+}
+
+.noItem {
+    composes: baseItem;
+    composes: error from '../../css/colors/foreground.css';
+}
+
+.highlight {
+    background-color: #e5eef6;  /* One off color - from Novo Estimating */
+}
+
+.itemHighlight > .highlight {
+    background-color: #dee6ee; /* One off color - from Novo Estimating */
+}

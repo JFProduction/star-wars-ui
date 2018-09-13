@@ -1,0 +1,35 @@
+﻿.frame {
+    composes: silver from '../../../css/colors/borders.css';
+    composes: white from '../../../css/colors/background.css';
+    border: 1px solid;
+    border-radius: 4px;
+    box-shadow: 0 0 20px 0 rgba(109,120,129,0.16);
+    z-index: 10;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-top: -22px;
+}
+
+.content {
+    height: 260px;
+}
+
+.footer {
+    composes: flex align-center justify-center from '../../../css/flex.css';
+    composes: bold from '../../../css/font.css';
+    composes: tango from '../../../css/colors/background.css';
+    composes: white from '../../../css/colors/foreground.css';
+    cursor: pointer;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 15px 0;
+    font-size: 12px;
+    line-height: 24px;
+    border-radius: 0 0 4px 4px;
+    cursor: pointer;
+}
+
+.tileGroup {
+    composes: flex wrap from '../../../css/flex.css';
+}
