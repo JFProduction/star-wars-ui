@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Utils } from '../../Utils';
 import MainCard from './MainCard';
 import ListCard from './ListCard'
-import { icons, Height, Gender, Mass, Default } from '../../assets/icons';
+import { icons, Height, Gender, Mass, Default, Films } from '../../assets/icons';
 import SimpleCardSubInfo from '../presentations/SimpleCardSubInfo'
 import Loading from '../presentations/Loading'
 import PageNav from '../presentations/PageNav'
@@ -145,13 +145,13 @@ class Container extends Component {
                 <div>
                   <div className="card-sub-icon-wrapper">
                     <img
-                      title="Mass" 
-                      src={Mass} 
-                      alt="Mass"
+                      title="films" 
+                      src={Films} 
+                      alt="films"
                       style={{width: 30, marginTop: 10}}
                     />
                   </div>
-                  {person.mass}
+                  {person.films.length}
                 </div>
               )
             }}

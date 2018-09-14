@@ -22,6 +22,7 @@ import IconCardviewActive from './Icon-Cardview-Active.svg'
 import IconCardview from './Icon-Cardview.svg'
 import IconListViewActive from './Icon-Listview-Active.svg'
 import IconListView from './Icon-Listview.svg'
+import Films from './films.png'
 
 const icons = {
   "Luke Skywalker": Luke,
@@ -50,5 +51,6 @@ export {
   IconListViewActive,
   IconListView,
   IconCardviewActive,
-  IconCardview
+  IconCardview,
+  Films
 }
