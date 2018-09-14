@@ -158,7 +158,7 @@ class MainCard extends React.Component {
             background: "#F3F6F9",
             width: 100+"%",
             position: "absolute",
-            height: 45 + Math.ceil(size * .07),
+            height: 65 + Math.ceil(size * .07),
             bottom: 0,
             padding: "10px 0px",
             textAlign: "center",

@@ -1,8 +1,0 @@
-.numberText {
-    composes: text from '../FormField.module.css';
-}
-
-.currencyText {
-    composes: numberText;
-    text-align: right;
-}

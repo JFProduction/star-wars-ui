@@ -23,7 +23,7 @@
   border-radius: 5px;
   font-size: 15px;
   border: none;
-  padding: 5px;
+  padding: 10px;
 }
 
 .view-btn {
@@ -47,5 +47,5 @@
 }
 
 .btn:hover {
-  padding: 5px;
+  padding: 10px;
 }

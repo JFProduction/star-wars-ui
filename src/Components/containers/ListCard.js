@@ -35,6 +35,7 @@ class ListCard extends React.Component {
                   marginLeft: 30
                 }}
                 src={imgSrc}
+                alt="Main Img"
               />
             </div>
           )

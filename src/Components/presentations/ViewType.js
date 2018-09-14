@@ -30,6 +30,7 @@ const ViewType = ({view, handleClick, children}) => {
         className={`view-btn ${view === "card" ? "active" : ""}`}
         src={cardViewIcon}
         onClick={handleClick}
+        alt="Card View"
       />
       <img 
         id="list"
@@ -37,6 +38,7 @@ const ViewType = ({view, handleClick, children}) => {
         onClick={handleClick} 
         className={`view-btn ${view === "list" ? "active" : ""}`} 
         src={listViewIcon}
+        alt="List View"
       />
     </div>
   )

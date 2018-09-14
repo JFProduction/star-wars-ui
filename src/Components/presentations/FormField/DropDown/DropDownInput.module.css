@@ -1,8 +1,0 @@
-﻿.text {
-    composes: text from '../FormField.module.css';
-}
-
-.button {
-    cursor: pointer;
-}
-

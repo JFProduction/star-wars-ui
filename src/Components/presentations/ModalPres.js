@@ -41,7 +41,7 @@ const ModalPres = ({open, handleClose, info}) => (
         />
         <h2>{info.person.name}</h2>
       </div>
-      <h4>Casted In:</h4>
+      <h4>Casted In:</h4><br />
       {
         info.films.sort((a, b) => a.release_date > b.release_date).map((f, i) => 
           <div key={i} style={{marginBottom: 10}}>

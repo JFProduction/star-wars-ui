@@ -15,6 +15,7 @@ class Container extends Component {
     super(props)
     this.state = {
       people: [],
+      filteredPeople: [],
       next: "",
       prev: "",
       loading: false,
@@ -22,15 +23,37 @@ class Container extends Component {
       selectedPerson: {},
       layout: "card"
     }
+
+    this.inputRef = React.createRef()
   }
 
   componentDidMount() {
     this.setState({loading: true})
     Utils.get(`https://swapi.co/api/people`)
       .then(resp => {
-        this.setState({people: resp.results, next: resp.next, loading: false})
+        this.setState({
+          people: resp.results, 
+          filteredPeople: resp.results,
+          next: resp.next, 
+          loading: false
+        })
       })
       .catch(err => console.log(err))
+  }
+
+  search = e => {
+    e.preventDefault()
+    
+    if (this.inputRef.current.value.trim().length > 0) {
+      Utils.get(`https://swapi.co/api/people?search=${this.inputRef.current.value}`)
+        .then(resp => {
+          if (resp.count === 1) {
+            this.setState({
+              selectedPerson: resp.results[0]
+            })
+          }
+        })
+    }
   }
 
   handleCardClick = id => () => {
@@ -65,8 +88,9 @@ class Container extends Component {
     this.setState({layout: target.id})
   }
 
-  getLayout = (color, person, i) => {
+  getLayout = (person, i) => {
     const { layout } = this.state
+    let color = person.gender === "female" ? "#ff5252" : "#59C3C3"
 
     if (layout === "card") {
       return (
@@ -167,7 +191,33 @@ class Container extends Component {
     } = this.state
 
     return (
-      <div>
+      <div
+        style={{position: "relative"}}
+      >
+        <form
+          onSubmit={this.search}
+          style={{
+            position: "absolute",
+            top: -60,
+            right: 10
+          }}
+        >
+          <input
+            ref={this.inputRef}
+            style={{
+              padding: 10,
+              width: 150,
+              borderRadius: 5,
+              border: "1px solid #ddd",
+              marginRight: 10
+            }}
+            placeholder="Global Search..."
+          />
+          <button
+            className="btn"
+            type="submit"
+          >go</button>
+        </form>
         <PageNav
           onClick={this.clickNextPrev}
           prev={prev}
@@ -205,9 +255,8 @@ class Container extends Component {
       {
         this.state.people.length > 0 && !this.state.loading ?
           this.state.people.map((person, i) => {
-            let color = person.gender === "female" ? "#ff5252" : "#59C3C3"
             return (
-              person.name && this.getLayout(color, person, i)
+              person.name && this.getLayout(person, i)
             )
           })
           : <Loading />
