@@ -63,8 +63,6 @@ class MainCard extends React.Component {
     return (
       <div
         style={{
-          width: size === 451 ? 540 : size,
-          height: size,
           fontSize: mainFs
         }}
         className={`main-card ${clickable}`}

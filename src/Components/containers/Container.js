@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Utils } from '../../Utils';
 import MainCard from './MainCard';
 import ListCard from './ListCard'
-import { icons, Height, Gender, Mass, Default, Films } from '../../assets/icons';
+import { icons, Height, Gender, Default, Films } from '../../assets/icons';
 import SimpleCardSubInfo from '../presentations/SimpleCardSubInfo'
 import Loading from '../presentations/Loading'
 import PageNav from '../presentations/PageNav'
@@ -10,16 +10,15 @@ import MyModal from './MyModal';
 import ViewType from '../presentations/ViewType'
 import ListHeader from '../presentations/ListHeader';
 
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+
+import { requestApiData } from "../../sagas/actions";
+
 class Container extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      people: [],
-      filteredPeople: [],
-      next: "",
-      prev: "",
-      loading: false,
-      page: 0,
       selectedPerson: {},
       layout: "card"
     }
@@ -28,17 +27,7 @@ class Container extends Component {
   }
 
   componentDidMount() {
-    this.setState({loading: true})
-    Utils.get(`https://swapi.co/api/people`)
-      .then(resp => {
-        this.setState({
-          people: resp.results, 
-          filteredPeople: resp.results,
-          next: resp.next, 
-          loading: false
-        })
-      })
-      .catch(err => console.log(err))
+    this.props.requestApi("https://swapi.co/api/people")
   }
 
   search = e => {
@@ -57,27 +46,13 @@ class Container extends Component {
   }
 
   handleCardClick = id => () => {
-    let person = this.state.people.filter(p => p.name === id)[0]
+    let person = this.props.data.results.filter(p => p.name === id)[0]
     this.setState({selectedPerson: person})
   }
 
   clickNextPrev = which => _ => {
-    let people = [...this.state.people]
-    this.setState({loading: true})
-    const url = which === 1 ? this.state.next : this.state.prev
-
-    Utils.get(url)
-      .then(resp => {
-        people = resp.results
-        this.setState({
-          people, 
-          next: resp.next, 
-          prev: resp.previous, 
-          loading: false,
-          page: this.state.page + which
-        })
-      })
-      .catch(err => console.log(err))
+    const url = which === 1 ? this.props.data.next : this.props.data.previous
+    this.props.requestApi(url)
   }
 
   handleClose = () => {
@@ -182,13 +157,11 @@ class Container extends Component {
   
   render() {
     const {
-      prev,
-      next,
-      page,
-      loading,
       selectedPerson,
       layout
     } = this.state
+
+    const { data } = this.props
 
     return (
       <div
@@ -220,10 +193,10 @@ class Container extends Component {
         </form>
         <PageNav
           onClick={this.clickNextPrev}
-          prev={prev}
-          next={next}
-          page={page}
-          loading={loading}
+          prev={data.previous}
+          next={data.next}
+          page={0}
+          loading={false}
         />
         <ViewType
           handleClick={this.handleClickViewType}
@@ -239,7 +212,7 @@ class Container extends Component {
           />
       }
       {
-        layout === "list" && !loading && (
+        layout === "list" && (
           <ListHeader
             headerList={[
               {lbl: "name", style: {marginLeft: 255}},
@@ -253,8 +226,8 @@ class Container extends Component {
         )
       }
       {
-        this.state.people.length > 0 && !this.state.loading ?
-          this.state.people.map((person, i) => {
+        data.results && data.results.length > 0 ?
+          data.results.map((person, i) => {
             return (
               person.name && this.getLayout(person, i)
             )
@@ -266,4 +239,14 @@ class Container extends Component {
   }
 }
 
-export default Container
+const mapStateToProps = ({data}) => ({data})
+const mapDispatchToProps = dispatch => 
+  bindActionCreators(
+    { requestApi: url => requestApiData(url) },
+    dispatch
+  )
+
+export default connect(
+  mapStateToProps, 
+  mapDispatchToProps
+)(Container)

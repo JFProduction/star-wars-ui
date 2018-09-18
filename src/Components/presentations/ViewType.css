@@ -68,3 +68,13 @@
 .slider:focus::-ms-fill-upper {
   background: #d3d3d3 !important;
 }
+
+#list {
+  display: none;
+}
+
+@media screen and (min-width: 900px) {
+  #list {
+    display: inline-block;
+  }
+}
