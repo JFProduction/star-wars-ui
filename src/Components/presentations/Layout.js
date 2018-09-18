@@ -9,9 +9,8 @@ import { selectPersonFromCard } from '../../sagas/actions';
 import {connect} from 'react-redux'
 
 
-const Layout = ({person, key, layout, cardClick, people}) => {
-  const handleCardClick = id => () => {
-    let person = people.results.filter(p => p.name === id)[0]
+const Layout = ({ person, key, layout, cardClick }) => {
+  const handleCardClick = () => () => {
     cardClick(person)
   }
 
@@ -105,9 +104,8 @@ const Layout = ({person, key, layout, cardClick, people}) => {
   }
 }
 
-const mapStateToProps = ({people}) => ({people})
 const mapDispatchToProps = dispatch => bindActionCreators({
   cardClick: person => selectPersonFromCard(person),
 }, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(Layout)
+export default connect(undefined, mapDispatchToProps)(Layout)
