@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Utils } from '../../Utils';
 import MainCard from './MainCard';
 import ListCard from './ListCard'
 import { icons, Height, Gender, Default, Films } from '../../assets/icons';
@@ -9,17 +8,16 @@ import PageNav from '../presentations/PageNav'
 import MyModal from './MyModal';
 import ViewType from '../presentations/ViewType'
 import ListHeader from '../presentations/ListHeader';
+import SearchStuff from '../presentations/SearchStuff'
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-
-import { requestApiData } from "../../sagas/actions";
+import { requestApiData, requestPersonApi, removePerson } from "../../sagas/actions";
 
 class Container extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedPerson: {},
       layout: "card"
     }
 
@@ -34,14 +32,7 @@ class Container extends Component {
     e.preventDefault()
     
     if (this.inputRef.current.value.trim().length > 0) {
-      Utils.get(`https://swapi.co/api/people?search=${this.inputRef.current.value}`)
-        .then(resp => {
-          if (resp.count === 1) {
-            this.setState({
-              selectedPerson: resp.results[0]
-            })
-          }
-        })
+      this.props.requestPerson(`https://swapi.co/api/people?search=${this.inputRef.current.value}`)
     }
   }
 
@@ -56,7 +47,7 @@ class Container extends Component {
   }
 
   handleClose = () => {
-    this.setState({selectedPerson: {}})
+    this.props.removeSelectedPerson()
   }
 
   handleClickViewType = ({target}) => {
@@ -157,47 +148,29 @@ class Container extends Component {
   
   render() {
     const {
-      selectedPerson,
       layout
     } = this.state
 
-    const { data } = this.props
+    const { people, selectedPerson } = this.props
 
     return (
       <div
         style={{position: "relative"}}
       >
-        <form
-          onSubmit={this.search}
-          style={{
-            position: "absolute",
-            top: -60,
-            right: 10
-          }}
-        >
-          <input
-            ref={this.inputRef}
-            style={{
-              padding: 10,
-              width: 150,
-              borderRadius: 5,
-              border: "1px solid #ddd",
-              marginRight: 10
-            }}
-            placeholder="Global Search..."
-          />
-          <button
-            className="btn"
-            type="submit"
-          >go</button>
-        </form>
-        <PageNav
-          onClick={this.clickNextPrev}
-          prev={data.previous}
-          next={data.next}
-          page={0}
-          loading={false}
+        <SearchStuff
+          search={this.search}
+          inputRef={this.inputRef}
         />
+        {
+          people &&
+            <PageNav
+              onClick={this.clickNextPrev}
+              prev={people.previous}
+              next={people.next}
+              page={0}
+              loading={false}
+            />
+        }
         <ViewType
           handleClick={this.handleClickViewType}
           view={layout}
@@ -226,8 +199,8 @@ class Container extends Component {
         )
       }
       {
-        data.results && data.results.length > 0 ?
-          data.results.map((person, i) => {
+        people.results && people.results.length > 0 ?
+          people.results.map((person, i) => {
             return (
               person.name && this.getLayout(person, i)
             )
@@ -239,12 +212,15 @@ class Container extends Component {
   }
 }
 
-const mapStateToProps = ({data}) => ({data})
-const mapDispatchToProps = dispatch => 
-  bindActionCreators(
-    { requestApi: url => requestApiData(url) },
-    dispatch
-  )
+const mapStateToProps = ({DataReducer}) => {
+  return DataReducer
+}
+
+const mapDispatchToProps = dispatch => bindActionCreators({ 
+  requestApi: url => requestApiData(url),
+  requestPerson: url => requestPersonApi(url),
+  removeSelectedPerson: () => removePerson()
+}, dispatch)
 
 export default connect(
   mapStateToProps, 
