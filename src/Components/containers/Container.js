@@ -1,8 +1,4 @@
 import React, { Component } from 'react'
-import MainCard from './MainCard';
-import ListCard from './ListCard'
-import { icons, Height, Gender, Default, Films } from '../../assets/icons';
-import SimpleCardSubInfo from '../presentations/SimpleCardSubInfo'
 import Loading from '../presentations/Loading'
 import PageNav from '../presentations/PageNav'
 import MyModal from './MyModal';
@@ -14,10 +10,9 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { 
   requestApiData, 
-  requestPersonApi, 
-  removePerson, 
-  selectPersonFromCard 
+  removePerson
 } from "../../sagas/actions";
+import Layout from '../presentations/Layout';
 
 class Container extends Component {
   constructor(props) {
@@ -33,19 +28,6 @@ class Container extends Component {
     this.props.requestApi("https://swapi.co/api/people")
   }
 
-  search = e => {
-    e.preventDefault()
-    
-    if (this.inputRef.current.value.trim().length > 0) {
-      this.props.requestPerson(`https://swapi.co/api/people?search=${this.inputRef.current.value}`)
-    }
-  }
-
-  handleCardClick = id => () => {
-    let person = this.props.people.results.filter(p => p.name === id)[0]
-    this.props.cardClick(person)
-  }
-
   clickNextPrev = which => _ => {
     const url = which === 1 ? this.props.people.next : this.props.people.previous
     this.props.requestApi(url)
@@ -57,98 +39,6 @@ class Container extends Component {
 
   handleClickViewType = ({target}) => {
     this.setState({layout: target.id})
-  }
-
-  getLayout = (person, i) => {
-    const { layout } = this.state
-    let color = person.gender === "female" ? "#ff5252" : "#59C3C3"
-
-    if (layout === "card") {
-      return (
-        <MainCard
-          size={263}
-          mainText={person.name}
-          secondaryText={person.birth_year}
-          key={i}
-          handleCardClick={this.handleCardClick}
-          idInfo={{
-            id: person.name
-          }}
-          imgSrc={icons[person.name] || Default}
-        >
-          <SimpleCardSubInfo
-            infoOne={{
-              content: (
-                <div>
-                  <div className="card-sub-icon-wrapper">
-                    <img
-                      title="Height" 
-                      src={Height} 
-                      alt="Height"
-                      style={{width: 50}}
-                    />
-                  </div>
-                  {person.height}
-                </div>
-              )
-            }}
-            infoTwo={{
-              content: (
-                <div
-                  style={{
-                    color
-                  }}
-                >
-                  <div className="card-sub-icon-wrapper">
-                    <img
-                      title="Gender" 
-                      src={Gender} 
-                      alt="Gender"
-                      style={{width: 30, marginTop: 10}}
-                    />
-                  </div>
-                  {person.gender}
-                </div>
-              )
-            }}
-            infoThree={{
-              content: (
-                <div>
-                  <div className="card-sub-icon-wrapper">
-                    <img
-                      title="films" 
-                      src={Films} 
-                      alt="films"
-                      style={{width: 30, marginTop: 10}}
-                    />
-                  </div>
-                  {person.films.length}
-                </div>
-              )
-            }}
-          />
-        </MainCard>
-      )
-    } else if (layout === "list") {
-      return (
-        <ListCard
-          key={i}
-          info={person}
-          small={true}
-          handleCardClick={this.handleCardClick}
-          imgSrc={icons[person.name] || Default}
-          colInfo={[
-            [person.name, `Films - ${person.films.length}`],
-            [person.gender],
-            [person.mass],
-            [person.height]
-          ]}
-          idInfo={{
-            id: person.name
-          }}
-        />
-      )
-    }
   }
   
   render() {
@@ -207,7 +97,12 @@ class Container extends Component {
         people.results && people.results.length > 0 ?
           people.results.map((person, i) => {
             return (
-              person.name && this.getLayout(person, i)
+              person.name && 
+                <Layout
+                  person={person}
+                  key={i}
+                  layout={layout}
+                />
             )
           })
           : <Loading />
@@ -223,8 +118,6 @@ const mapStateToProps = ({people, selectedPerson}) => {
 
 const mapDispatchToProps = dispatch => bindActionCreators({ 
   requestApi: url => requestApiData(url),
-  requestPerson: url => requestPersonApi(url),
-  cardClick: person => selectPersonFromCard(person),
   removePerson,
 }, dispatch)
 
