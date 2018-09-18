@@ -1,7 +1,8 @@
 import { 
   RECEIVE_API_DATA, 
   RECEIVE_PERSON_API, 
-  ERROR_WITH_DATA 
+  ERROR_WITH_DATA, 
+  REMOVE_PERSON
 } from "../sagas/actions";
 
 const initialState = {
@@ -18,7 +19,6 @@ export const DataReducer = (state = initialState, { type, payload }) => {
         ...state,
         people: payload
       }
-      console.log(newState)
       return newState;
     case RECEIVE_PERSON_API:
       return {
@@ -29,6 +29,12 @@ export const DataReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         error: payload
+      }
+    case REMOVE_PERSON:
+      console.log("removing!!")
+      return {
+        ...state,
+        selectedPerson: {}
       }
     default:
       return state;

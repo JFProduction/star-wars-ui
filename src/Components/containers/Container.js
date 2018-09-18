@@ -12,13 +12,12 @@ import SearchStuff from '../presentations/SearchStuff'
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { requestApiData, requestPersonApi } from "../../sagas/actions";
+import { requestApiData, requestPersonApi, removePerson } from "../../sagas/actions";
 
 class Container extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedPerson: {},
       layout: "card"
     }
 
@@ -48,7 +47,7 @@ class Container extends Component {
   }
 
   handleClose = () => {
-    this.setState({selectedPerson: {}})
+    this.props.removeSelectedPerson()
   }
 
   handleClickViewType = ({target}) => {
@@ -153,7 +152,6 @@ class Container extends Component {
     } = this.state
 
     const { people, selectedPerson } = this.props
-    console.log(this.props)
 
     return (
       <div
@@ -179,7 +177,7 @@ class Container extends Component {
           value={263}
         />
       {
-        selectedPerson && selectedPerson.films && 
+        selectedPerson.films && 
           <MyModal
             handleClose={this.handleClose}
             open={!!selectedPerson.films}
@@ -201,7 +199,7 @@ class Container extends Component {
         )
       }
       {
-        people && people.results && people.results.length > 0 ?
+        people.results && people.results.length > 0 ?
           people.results.map((person, i) => {
             return (
               person.name && this.getLayout(person, i)
@@ -214,20 +212,15 @@ class Container extends Component {
   }
 }
 
-const mapStateToProps = ({
-  people, 
-  selectedPerson, 
-  error, 
-  loading
-}) => ({people, selectedPerson, error, loading})
-const mapDispatchToProps = dispatch => 
-  bindActionCreators(
-    { 
-      requestApi: url => requestApiData(url),
-      requestPerson: url => requestPersonApi(url)
-    },
-    dispatch
-  )
+const mapStateToProps = ({DataReducer}) => {
+  return DataReducer
+}
+
+const mapDispatchToProps = dispatch => bindActionCreators({ 
+  requestApi: url => requestApiData(url),
+  requestPerson: url => requestPersonApi(url),
+  removeSelectedPerson: () => removePerson()
+}, dispatch)
 
 export default connect(
   mapStateToProps, 

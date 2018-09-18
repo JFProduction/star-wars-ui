@@ -11,3 +11,7 @@ export const receivePersonApi = data => ({ type: RECEIVE_PERSON_API, payload: da
 
 export const ERROR_WITH_DATA = "ERROR_WITH_DATA"
 export const errorWithData = data => ({type: ERROR_WITH_DATA, payload: data})
+
+
+export const REMOVE_PERSON = "REMOVE_PERSON"
+export const removePerson = () => ({type: REMOVE_PERSON})
