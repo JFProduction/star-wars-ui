@@ -15,3 +15,6 @@ export const errorWithData = data => ({type: ERROR_WITH_DATA, payload: data})
 
 export const REMOVE_PERSON = "REMOVE_PERSON"
 export const removePerson = () => ({type: REMOVE_PERSON})
+
+export const SELECTED_PERSON = "SELECTED_PERSON"
+export const selectPersonFromCard = person => ({type: SELECTED_PERSON, payload: person})

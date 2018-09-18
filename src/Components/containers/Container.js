@@ -12,7 +12,12 @@ import SearchStuff from '../presentations/SearchStuff'
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { requestApiData, requestPersonApi, removePerson } from "../../sagas/actions";
+import { 
+  requestApiData, 
+  requestPersonApi, 
+  removePerson, 
+  selectPersonFromCard 
+} from "../../sagas/actions";
 
 class Container extends Component {
   constructor(props) {
@@ -37,17 +42,17 @@ class Container extends Component {
   }
 
   handleCardClick = id => () => {
-    let person = this.props.data.results.filter(p => p.name === id)[0]
-    this.setState({selectedPerson: person})
+    let person = this.props.people.results.filter(p => p.name === id)[0]
+    this.props.cardClick(person)
   }
 
   clickNextPrev = which => _ => {
-    const url = which === 1 ? this.props.data.next : this.props.data.previous
+    const url = which === 1 ? this.props.people.next : this.props.people.previous
     this.props.requestApi(url)
   }
 
   handleClose = () => {
-    this.props.removeSelectedPerson()
+    this.props.removePerson()
   }
 
   handleClickViewType = ({target}) => {
@@ -212,14 +217,15 @@ class Container extends Component {
   }
 }
 
-const mapStateToProps = ({DataReducer}) => {
-  return DataReducer
+const mapStateToProps = ({people, selectedPerson}) => {
+  return {people, selectedPerson}
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({ 
   requestApi: url => requestApiData(url),
   requestPerson: url => requestPersonApi(url),
-  removeSelectedPerson: () => removePerson()
+  cardClick: person => selectPersonFromCard(person),
+  removePerson,
 }, dispatch)
 
 export default connect(

@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
 
-import reducer from "./reducers";
+import {DataReducer} from "./reducers/data";
 import mySaga from "./sagas";
 
 import {
@@ -12,7 +12,7 @@ import {
 const sagaMiddleware = createSagaMiddleware();
 // mount it on the Store
 export default createStore(
-  reducer, 
+  DataReducer, 
   composeWithDevTools(
     applyMiddleware(sagaMiddleware)
   )
