@@ -4,6 +4,9 @@ export const fetchData = async url => {
     const data = await response.json();
     return data;
   } catch (e) {
-    console.log(e);
+    return {
+      error: true,
+      err: e
+    }
   }
 };

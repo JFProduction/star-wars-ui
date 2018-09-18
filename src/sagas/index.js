@@ -1,14 +1,40 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 
-import { REQUEST_API_DATA, receiveApiData } from "./actions";
+import { 
+  REQUEST_API_DATA, 
+  receiveApiData, 
+  REQUEST_PERSON_API, 
+  receivePersonApi, 
+  errorWithData
+} from "./actions";
+
 import { fetchData } from "../apis";
 
 // worker Saga: will be fired on USER_FETCH_REQUESTED actions
-function* getApiData({type, payload}) {
+function* getApiData(action) {
   try {
     // do api call
-    const data = yield call(fetchData, payload);
-    yield put(receiveApiData(data));
+    const data = yield call(fetchData, action.payload);
+    if (!data.error) {
+      yield put(receiveApiData(data));
+    } else {
+      yield put(errorWithData(data))
+    }
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+function* getPerson(action) {
+  try {
+    // do api call
+    const data = yield call(fetchData, action.payload);
+
+    if (!data.error) {
+      yield put(receivePersonApi(data));
+    } else {
+      yield put(errorWithData(data))
+    }
   } catch (e) {
     console.log(e);
   }
@@ -22,4 +48,5 @@ function* getApiData({type, payload}) {
 */
 export default function* mySaga() {
   yield takeLatest(REQUEST_API_DATA, getApiData);
+  yield takeLatest(REQUEST_PERSON_API, getPerson);
 }
