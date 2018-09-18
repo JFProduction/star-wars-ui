@@ -12,7 +12,6 @@ const initialState = {
 }
 
 export const DataReducer = (state = initialState, { type, payload }) => {
-  console.log(payload)
   switch (type) {
     case RECEIVE_API_DATA:
       let newState = {

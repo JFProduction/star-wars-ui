@@ -33,14 +33,6 @@ class Container extends Component {
     e.preventDefault()
     
     if (this.inputRef.current.value.trim().length > 0) {
-      // Utils.get(`https://swapi.co/api/people?search=${this.inputRef.current.value}`)
-      //   .then(resp => {
-      //     if (resp.count === 1) {
-      //       this.setState({
-      //         selectedPerson: resp.results[0]
-      //       })
-      //     }
-      //   })
       this.props.requestPerson(`https://swapi.co/api/people?search=${this.inputRef.current.value}`)
     }
   }
