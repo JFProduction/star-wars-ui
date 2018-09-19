@@ -14,7 +14,7 @@ import {
 } from "../../sagas/actions";
 import Layout from '../presentations/Layout';
 
-class Container extends Component {
+export class Container extends Component {
   constructor(props) {
     super(props)
     this.state = {
