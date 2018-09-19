@@ -30,10 +30,11 @@ describe("container tests", () => {
     }, 0)
   })
 
-  it("should render 9 main cards", () => {
+  it("should render 10 main cards", () => {
     expect(wrapper.find("MainCard")).toHaveLength(10)
   })
 
+  // TODO: Figure this out...
   // it("should change state.layout to list", () => {
   //   expect(wrapper.state().layout).toEqual("card")
   //   wrapper.find("img[id='list']").simulate("click")

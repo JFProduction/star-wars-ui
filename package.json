@@ -19,7 +19,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "test-watch": "jest",
+    "test-verbose": "react-scripts test --verbose",
     "eject": "react-scripts eject",
     "whip-it": "serve -l 1337 ./build/"
   },
