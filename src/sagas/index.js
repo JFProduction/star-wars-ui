@@ -1,4 +1,9 @@
-import { call, put, takeLatest, all } from "redux-saga/effects";
+import { 
+  call, 
+  put, 
+  takeLatest, 
+  all 
+} from "redux-saga/effects";
 
 import { 
   REQUEST_API_DATA, 
@@ -11,10 +16,11 @@ import {
 import { fetchData } from "../apis";
 
 // worker Saga: will be fired on USER_FETCH_REQUESTED actions
-function* getApiData(action) {
+export function* getApiData(action) {
   try {
     // do api call
     const data = yield call(fetchData, action.payload);
+
     if (!data.error) {
       if (action.type === REQUEST_API_DATA) {
         yield put(receiveApiData(data));
