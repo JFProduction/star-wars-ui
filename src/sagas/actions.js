@@ -3,6 +3,9 @@ export const RECEIVE_API_DATA = "RECEIVE_API_DATA";
 export const requestApiData = url => ({ type: REQUEST_API_DATA, payload: url });
 export const receiveApiData = data => ({ type: RECEIVE_API_DATA, payload: data });
 
+export const LOADING = "LOADING";
+export const isLoading = payload => ({type: LOADING, payload})
+
 
 export const REQUEST_PERSON_API = "REQUEST_PERSON_API";
 export const RECEIVE_PERSON_API = "RECEIVE_PERSON_API";
@@ -18,3 +21,6 @@ export const removePerson = () => ({type: REMOVE_PERSON})
 
 export const SELECTED_PERSON = "SELECTED_PERSON"
 export const selectPersonFromCard = person => ({type: SELECTED_PERSON, payload: person})
+
+export const DO_SOMETHING = "DO_SOMETHING"
+export const something = payload => ({type: DO_SOMETHING, payload})

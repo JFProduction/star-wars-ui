@@ -1,11 +1,15 @@
 import React from 'react'
 import { bindActionCreators } from 'redux';
 import { connect } from "react-redux";
-import { requestPersonApi } from '../../sagas/actions';
+import { requestPersonApi, something } from '../../sagas/actions';
 
 const inputRef = React.createRef()
 
-const SearchStuff = ({requestPerson}) => {
+const doo = (key, fn) => event => {
+  fn({key, event})
+}
+
+const SearchStuff = ({requestPerson, doSomething}) => {
   const search = e => {
     e.preventDefault()
     
@@ -33,6 +37,7 @@ const SearchStuff = ({requestPerson}) => {
           marginRight: 10
         }}
         placeholder="Global Search..."
+        onBlur={doo("testing", doSomething)}
       />
       <button
         className="btn"
@@ -43,7 +48,11 @@ const SearchStuff = ({requestPerson}) => {
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  requestPerson: url => requestPersonApi(url)
+  requestPerson: url => requestPersonApi(url),
+  doSomething: payload => something(payload)
 }, dispatch)
 
-export default connect(undefined, mapDispatchToProps)(SearchStuff)
+export default connect(
+  undefined, 
+  mapDispatchToProps
+)(SearchStuff)

@@ -46,7 +46,7 @@ export class Container extends Component {
       layout
     } = this.state
 
-    const { people, selectedPerson } = this.props
+    const { people, selectedPerson, loading } = this.props
 
     return (
       <div
@@ -94,7 +94,7 @@ export class Container extends Component {
         )
       }
       {
-        people.results && people.results.length > 0 ?
+        people.results && people.results.length > 0 && !loading ?
           people.results.map((person, i) => {
             return (
               person.name && 
@@ -105,15 +105,17 @@ export class Container extends Component {
                 />
             )
           })
-          : <Loading />
+          : loading 
+            ? <Loading /> 
+            : <div>Nothing to view...</div>
       }
       </div>
     )
   }
 }
 
-const mapStateToProps = ({people, selectedPerson}) => {
-  return {people, selectedPerson}
+const mapStateToProps = ({people, selectedPerson, loading}) => {
+  return {people, selectedPerson, loading}
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({ 
