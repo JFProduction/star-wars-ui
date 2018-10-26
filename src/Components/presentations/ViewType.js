@@ -7,15 +7,12 @@ import {
   IconCardviewActive, 
   IconCardview, 
   IconListViewActive,
-  IconGridviewActive,
-  IconGridView,
   IconListView
-} from '../../../assets/icons'
+} from '../../assets/icons'
 
-const ViewType = ({handleSlide, view, handleClick, value, children, showGrid}) => {
+const ViewType = ({view, handleClick, children}) => {
   let cardViewIcon = view === "card" ? IconCardviewActive : IconCardview
   let listViewIcon = view === "list" ? IconListViewActive : IconListView
-  let gridViewIcon = view === "grid" ? IconGridviewActive : IconGridView
 
   return (
     <div
@@ -27,29 +24,13 @@ const ViewType = ({handleSlide, view, handleClick, value, children, showGrid}) =
       }}
     >
     { children }
-    {
-      view === "card" && (
-        <input 
-          className="slider"
-          step={94}
-          type="range" 
-          min={263} max={451} 
-          value={value} 
-          onChange={handleSlide} 
-          style={{ 
-            display: "inline-block", 
-            width: 150, 
-            marginRight: 20
-          }}
-        />
-      )
-    }
       <img 
         id="card"
         title="Card View"
         className={`view-btn ${view === "card" ? "active" : ""}`}
         src={cardViewIcon}
         onClick={handleClick}
+        alt="Card View"
       />
       <img 
         id="list"
@@ -57,18 +38,8 @@ const ViewType = ({handleSlide, view, handleClick, value, children, showGrid}) =
         onClick={handleClick} 
         className={`view-btn ${view === "list" ? "active" : ""}`} 
         src={listViewIcon}
+        alt="List View"
       />
-      {
-        showGrid && (
-          <img 
-            id="grid"
-            title="Grid View"
-            onClick={handleClick} 
-            className={`view-btn ${view === "grid" ? "active" : ""}`} 
-            src={gridViewIcon}
-          />
-        )
-      }
     </div>
   )
 }

@@ -12,6 +12,17 @@ import Mass from './mass.png'
 import Default from './default.png'
 import BobaFett from './boba-fett.png'
 import JarJar from './jar-jar.png'
+import C3PO from './c3po.png'
+import BB8 from './bb8.png'
+import Chewy from './chewy.png'
+import Jabba from './jabba.png'
+import QuiGon from './qui-gon.png'
+
+import IconCardviewActive from './Icon-Cardview-Active.svg'
+import IconCardview from './Icon-Cardview.svg'
+import IconListViewActive from './Icon-Listview-Active.svg'
+import IconListView from './Icon-Listview.svg'
+import Films from './films.png'
 
 const icons = {
   "Luke Skywalker": Luke,
@@ -23,7 +34,12 @@ const icons = {
   "Han Solo": HanSolo,
   "Yoda": Yoda,
   "Boba Fett": BobaFett,
-  "Jar Jar Binks": JarJar
+  "Jar Jar Binks": JarJar,
+  "C-3PO": C3PO,
+  "BB8": BB8,
+  "Chewbacca": Chewy,
+  "Jabba Desilijic Tiure": Jabba,
+  "Qui-Gon Jinn": QuiGon
 }
 
 export {
@@ -31,5 +47,10 @@ export {
   Height,
   Gender,
   Mass,
-  Default
+  Default,
+  IconListViewActive,
+  IconListView,
+  IconCardviewActive,
+  IconCardview,
+  Films
 }

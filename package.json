@@ -3,14 +3,29 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "global": "^4.3.2",
+    "moment": "^2.22.2",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
-    "react-scripts": "1.1.5"
+    "react-modal": "^3.5.1",
+    "react-redux": "^5.0.7",
+    "react-scripts": "^1.1.5",
+    "redux": "^4.0.0",
+    "redux-devtools-extension": "^2.13.5",
+    "redux-saga": "^0.16.0",
+    "serve": "^10.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && touch ./build/Staticfile",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "test-verbose": "react-scripts test --verbose",
+    "eject": "react-scripts eject",
+    "whip-it": "serve -l 1337 ./build/"
+  },
+  "devDependencies": {
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
+    "enzyme-to-json": "^3.3.4"
   }
 }
