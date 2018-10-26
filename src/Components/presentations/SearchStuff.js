@@ -5,7 +5,7 @@ import { requestPersonApi } from '../../sagas/actions';
 
 const inputRef = React.createRef()
 
-const SearchStuff = ({requestPerson}) => {
+export const SearchStuff = ({requestPerson}) => {
   const search = e => {
     e.preventDefault()
     

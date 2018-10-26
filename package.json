@@ -17,7 +17,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && touch ./build/Staticfile",
     "test": "react-scripts test --env=jsdom",
     "test-verbose": "react-scripts test --verbose",
     "eject": "react-scripts eject",
