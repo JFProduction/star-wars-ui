@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Loading from '../presentations/Loading'
 import PageNav from '../presentations/PageNav'
-import MyModal from './MyModal';
+// import MyModal from './MyModal';
 import ViewType from '../presentations/ViewType'
 import ListHeader from '../presentations/ListHeader';
 import SearchStuff from '../presentations/SearchStuff'
@@ -13,6 +13,7 @@ import {
   removePerson
 } from "../../sagas/actions";
 import Layout from '../presentations/Layout';
+import ModalPres from '../presentations/ModalPres';
 
 export class Container extends Component {
   constructor(props) {
@@ -73,10 +74,10 @@ export class Container extends Component {
         />
       {
         selectedPerson.films && 
-          <MyModal
-            handleClose={this.handleClose}
-            open={!!selectedPerson.films}
+          <ModalPres
+            open={true}
             person={selectedPerson}
+            handleClose={this.handleClose}
           />
       }
       {
