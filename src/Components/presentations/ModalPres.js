@@ -18,6 +18,7 @@ const ModalPres = ({
 
   useEffect(() => {
     let tmpPerson = {...person}
+    // might not have to do this...
     setTempPerson(tmpPerson)
 
     Promise.all(person.films.map(f => Utils.get(f)))
@@ -67,7 +68,8 @@ const ModalPres = ({
             ? 
               <div 
                 style={{
-                  textAlign: "center"
+                  textAlign: "center",
+                  padding: 15
                 }} 
               >Loading...</div> 
             : 
