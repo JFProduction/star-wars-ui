@@ -1,19 +1,18 @@
 import React, { Component } from 'react'
 import Loading from '../presentations/Loading'
 import PageNav from '../presentations/PageNav'
-// import MyModal from './MyModal';
 import ViewType from '../presentations/ViewType'
-import ListHeader from '../presentations/ListHeader';
+import ListHeader from '../presentations/ListHeader'
 import SearchStuff from '../presentations/SearchStuff'
 
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
+import { bindActionCreators } from "redux"
+import { connect } from "react-redux"
 import { 
   requestApiData, 
   removePerson
 } from "../../sagas/actions";
 import Layout from '../presentations/Layout';
-import ModalPres from '../presentations/ModalPres';
+import { ModalPres } from '../presentations/ModalPres'
 
 export class Container extends Component {
   constructor(props) {

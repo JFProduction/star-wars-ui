@@ -5,8 +5,8 @@
   "dependencies": {
     "global": "^4.3.2",
     "moment": "^2.22.2",
-    "react": "^16.7.0-alpha.0",
-    "react-dom": "^16.7.0-alpha.0",
+    "react": "16.7.0-alpha.2",
+    "react-dom": "16.7.0-alpha.2",
     "react-modal": "^3.5.1",
     "react-redux": "^5.0.7",
     "react-scripts": "^1.1.5",

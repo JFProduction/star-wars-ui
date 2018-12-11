@@ -4,23 +4,15 @@ import moment from 'moment'
 import { icons, Default } from '../../assets/icons'
 
 import './Modal.css'
-import { Utils } from '../../Utils';
+import { Utils } from '../../Utils'
 
 ReactModal.setAppElement("body")
 
-const ModalPres = ({
-  open,
-  person,
-  handleClose
-}) => {
-  const [tmpPerson, setTempPerson] = useState({})
+export const ModalPres = ({open, person, handleClose}) => {
+  const [tmpPerson, setTempPerson] = useState({...person})
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    let tmpPerson = {...person}
-    // might not have to do this...
-    setTempPerson(tmpPerson)
-
     Promise.all(person.films.map(f => Utils.get(f)))
       .then(r => {
         tmpPerson.allFilms = r
@@ -58,7 +50,7 @@ const ModalPres = ({
         >
           <img 
             width={140}
-            src={icons[tmpPerson.name] || Default} 
+            src={icons[person.name] || Default} 
             alt="Avatar"
           />
           <h2>{tmpPerson.name}</h2>
@@ -82,7 +74,11 @@ const ModalPres = ({
                       .map((f, i) => 
                         <div key={i} style={{marginBottom: 10}}>
                           <div style={{fontWeight: 500}}>Ep. {f.episode_id} {f.title}</div>
-                          <div style={{fontSize: 12}}>{moment(f.release_date, "YYYY-MM-DD").format("MMM DD, YYYY")}</div>
+                          <div 
+                            style={{fontSize: 12}}
+                          >
+                            {moment(f.release_date, "YYYY-MM-DD").format("MMM DD, YYYY")}
+                          </div>
                         </div>
                       )
                 }
@@ -93,4 +89,4 @@ const ModalPres = ({
   )
 }
 
-export default ModalPres
+// export default ModalPres
