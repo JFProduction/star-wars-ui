@@ -55,6 +55,7 @@ export const ModalPres = ({open, person, handleClose}) => {
           />
           <h2>{tmpPerson.name}</h2>
         </div>
+        <br /><h4>Casted In:</h4><br />
         {
           loading 
             ? 
@@ -65,8 +66,7 @@ export const ModalPres = ({open, person, handleClose}) => {
                 }} 
               >Loading...</div> 
             : 
-              <React.Fragment>
-                <h4>Casted In:</h4><br />
+            <React.Fragment>
                 {
                   tmpPerson.allFilms && 
                     tmpPerson.allFilms
