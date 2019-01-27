@@ -29,7 +29,9 @@ export class Container extends Component {
   }
 
   clickNextPrev = which => _ => {
-    const url = which === 1 ? this.props.people.next : this.props.people.previous
+    const url = which === 1 
+      ? this.props.people.next 
+      : this.props.people.previous
     this.props.requestApi(url)
   }
 
