@@ -17,4 +17,4 @@ export const REMOVE_PERSON = "REMOVE_PERSON"
 export const removePerson = () => ({type: REMOVE_PERSON})
 
 export const SELECTED_PERSON = "SELECTED_PERSON"
-export const selectPersonFromCard = person => ({type: SELECTED_PERSON, payload: person})
+export const selectPersonFromCard = payload => ({type: SELECTED_PERSON, payload})

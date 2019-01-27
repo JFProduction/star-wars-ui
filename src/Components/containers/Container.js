@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 import Loading from '../presentations/Loading'
 import PageNav from '../presentations/PageNav'
-import MyModal from './MyModal';
 import ViewType from '../presentations/ViewType'
-import ListHeader from '../presentations/ListHeader';
+import ListHeader from '../presentations/ListHeader'
 import SearchStuff from '../presentations/SearchStuff'
 
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
+import { bindActionCreators } from "redux"
+import { connect } from "react-redux"
 import { 
   requestApiData, 
   removePerson
 } from "../../sagas/actions";
 import Layout from '../presentations/Layout';
+import { ModalPres } from '../presentations/ModalPres'
 
 export class Container extends Component {
   constructor(props) {
@@ -29,7 +29,9 @@ export class Container extends Component {
   }
 
   clickNextPrev = which => _ => {
-    const url = which === 1 ? this.props.people.next : this.props.people.previous
+    const url = which === 1 
+      ? this.props.people.next 
+      : this.props.people.previous
     this.props.requestApi(url)
   }
 
@@ -73,10 +75,10 @@ export class Container extends Component {
         />
       {
         selectedPerson.films && 
-          <MyModal
-            handleClose={this.handleClose}
-            open={!!selectedPerson.films}
+          <ModalPres
+            open={true}
             person={selectedPerson}
+            handleClose={this.handleClose}
           />
       }
       {

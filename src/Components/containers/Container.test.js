@@ -1,44 +1,75 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import { shallow } from 'enzyme'
 import { shallowToJson } from 'enzyme-to-json'
 
-import Container from './Container'
-import { Provider } from 'react-redux'
-import store from '../../store'
+import { Container } from './Container'
 import resp from '../../../__mocks__/MockResult'
 
 describe("container tests", () => {
   let wrapper
+  const api = jest.fn(),
+        remove = jest.fn()
 
   beforeAll(() => {
-    window.fetch = jest.fn(() => Promise.resolve({
-      json: () => Promise.resolve(resp)
-    }))
-
-    wrapper = mount(
-      <Provider store={store}>
-        <Container />
-      </Provider>
+    wrapper = shallow(
+      <Container
+        people={resp}
+        requestApi={api}
+        removePerson={remove}
+        selectedPerson={{}}
+      />
     )
   })
 
-  it("should match snapshot", done => {
-    setTimeout(() => {
-      wrapper.update()
+  describe("render tests", () => {
+    it("should match snapshot", () => {
       expect(shallowToJson(wrapper)).toMatchSnapshot()
-      done()
-    }, 0)
+    })
+  
+    it("should render 10 main cards", () => {
+      expect(wrapper.find("Connect(Layout)")).toHaveLength(10)
+    })
+
+    it("should have a modal", () => {
+      const tmp = shallow(
+        <Container
+          people={resp}
+          requestApi={api}
+          removePerson={remove}
+          selectedPerson={resp.results[0]}
+        />
+      )
+
+      expect(shallowToJson(tmp)).toMatchSnapshot()
+    })
   })
 
-  it("should render 10 main cards", () => {
-    expect(wrapper.find("MainCard")).toHaveLength(10)
-  })
+  describe("funcitonality tests", () => {
+    it("should call remove", () => {
+      wrapper.instance().handleClose()
+      expect(remove).toHaveBeenCalled()
+    })
 
-  // TODO: Figure this out...
-  // it("should change state.layout to list", () => {
-  //   expect(wrapper.state().layout).toEqual("card")
-  //   wrapper.find("img[id='list']").simulate("click")
-  //   wrapper.update()
-  //   expect(wrapper.state().layout).toEqual("list")
-  // })
+    it("should call api", () => {
+      wrapper.instance().clickNextPrev(1)()
+      expect(api).toHaveBeenCalledWith("https://swapi.co/api/people")
+    })
+
+    it("should call api", () => {
+      wrapper.instance().clickNextPrev("")()
+      expect(api).toHaveBeenCalledWith("https://swapi.co/api/people")
+    })
+
+    it("should call api as well", () => {
+      wrapper.instance().componentDidMount()
+      expect(api).toHaveBeenCalledWith("https://swapi.co/api/people")
+    })
+
+    it("should update layout to 'list'", () => {
+      expect(wrapper.state().layout).toEqual("card")
+      wrapper.instance().handleClickViewType({target: {id:"list"}})
+      expect(wrapper.state().layout).toEqual("list")
+      expect(wrapper.find("ListHeader")).toHaveLength(1)
+    })
+  })
 })
