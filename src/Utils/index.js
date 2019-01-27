@@ -19,5 +19,5 @@ const Utils = {
 }
 
 export {
-  Utils
+  Utils,
 }

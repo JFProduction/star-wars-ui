@@ -1,20 +1,23 @@
 import React from 'react'
-import {mount} from 'enzyme'
-import {shallowToJson} from 'enzyme-to-json'
-import Container from './Container';
+import { shallow } from 'enzyme'
+import { shallowToJson } from 'enzyme-to-json'
 
+import { Container } from './Container'
 import resp from '../../../__mocks__/MockResult'
 
 describe("container tests", () => {
   let wrapper
+  const api = jest.fn(),
+        remove = jest.fn()
 
   beforeAll(() => {
-    window.fetch = jest.fn(() => Promise.resolve({
-      json: () => Promise.resolve(resp)
-    }))
-
-    wrapper = mount(
-      <Container />
+    wrapper = shallow(
+      <Container
+        people={resp}
+        requestApi={api}
+        removePerson={remove}
+        selectedPerson={{}}
+      />
     )
   })
 
@@ -22,37 +25,51 @@ describe("container tests", () => {
     it("should match snapshot", () => {
       expect(shallowToJson(wrapper)).toMatchSnapshot()
     })
-
-    it("should show loading", () => {
-      expect(wrapper.find("Loading")).toHaveLength(1)
+  
+    it("should render 10 main cards", () => {
+      expect(wrapper.find("Connect(Layout)")).toHaveLength(10)
     })
 
-    it("should show cards after fetch is done", () => {
-      window.fetch()
-        .then(() => {})
-        .then(() => {
-          wrapper.update()
-          expect(wrapper.find("Loading")).toHaveLength(0)
-          expect(wrapper.find("MainCard")).toHaveLength(10)
-        })
+    it("should have a modal", () => {
+      const tmp = shallow(
+        <Container
+          people={resp}
+          requestApi={api}
+          removePerson={remove}
+          selectedPerson={resp.results[0]}
+        />
+      )
+
+      expect(shallowToJson(tmp)).toMatchSnapshot()
     })
   })
 
-  describe("functionality tests", () => {
-    it("should click a card", () => {
-      expect(wrapper.state().selectedPerson.films).toBe(undefined)
+  describe("funcitonality tests", () => {
+    it("should call remove", () => {
+      wrapper.instance().handleClose()
+      expect(remove).toHaveBeenCalled()
+    })
 
-      wrapper.find("MainCard").forEach((node, i) => {
-        if (i === 0) {
-          node.simulate("click")
-          window.fetch()
-            .then(() => {})
-            .then(() => {
-              wrapper.update()
-              expect(wrapper.state().selectedPerson).toBe(resp.results[0])
-            })
-        }
-      })
+    it("should call api", () => {
+      wrapper.instance().clickNextPrev(1)()
+      expect(api).toHaveBeenCalledWith("https://swapi.co/api/people")
+    })
+
+    it("should call api", () => {
+      wrapper.instance().clickNextPrev("")()
+      expect(api).toHaveBeenCalledWith("https://swapi.co/api/people")
+    })
+
+    it("should call api as well", () => {
+      wrapper.instance().componentDidMount()
+      expect(api).toHaveBeenCalledWith("https://swapi.co/api/people")
+    })
+
+    it("should update layout to 'list'", () => {
+      expect(wrapper.state().layout).toEqual("card")
+      wrapper.instance().handleClickViewType({target: {id:"list"}})
+      expect(wrapper.state().layout).toEqual("list")
+      expect(wrapper.find("ListHeader")).toHaveLength(1)
     })
   })
 })
