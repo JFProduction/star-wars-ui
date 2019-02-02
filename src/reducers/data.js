@@ -7,7 +7,7 @@ import {
 } from "../sagas/actions";
 
 const initialState = {
-  people: {},
+  people: [],
   selectedPerson: {},
   error: {},
   loading: false

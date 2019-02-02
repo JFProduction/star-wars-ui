@@ -11,7 +11,10 @@ import {
   REQUEST_PERSON_API, 
   receivePersonApi, 
   errorWithData,
+  GET_PEOPLE,
 } from "./actions";
+
+import { queries, client } from "../Utils"
 
 import { fetchData } from "../apis";
 
@@ -35,9 +38,23 @@ export function* getApiData(action) {
   }
 }
 
+export function* getPeople({type}) {
+  try {
+    const resp = yield client.query({
+      query: queries[type]
+    });
+    
+    if (resp.data.allPeople)
+      yield put(receiveApiData(resp.data.allPeople.people));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 export default function* mySaga() {
   yield all([
     takeLatest(REQUEST_API_DATA, getApiData),
-    takeLatest(REQUEST_PERSON_API, getApiData)
+    takeLatest(REQUEST_PERSON_API, getApiData),
+    takeLatest(GET_PEOPLE, getPeople)
   ])
 }

@@ -1,3 +1,6 @@
+import ApolloClient from 'apollo-boost'
+import gql from 'graphql-tag'
+
 const Utils = {
   get: function(url) {
     return fetch(url)
@@ -18,6 +21,37 @@ const Utils = {
   },
 }
 
+const queries = {
+  GET_PEOPLE: gql`
+  {
+    allPeople {
+      people {
+        name,
+        gender,
+        birthYear,
+        height,
+        homeworld {
+          name
+        },
+        species {
+          name
+        },
+        filmConnection {
+          films {
+            title
+          }
+        }
+      }
+    }
+  }`
+}
+
+const client = new ApolloClient({
+  uri: "http://localhost:52499"
+});
+
 export {
   Utils,
+  queries,
+  client,
 }

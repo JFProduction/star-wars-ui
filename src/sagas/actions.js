@@ -18,3 +18,6 @@ export const removePerson = () => ({type: REMOVE_PERSON})
 
 export const SELECTED_PERSON = "SELECTED_PERSON"
 export const selectPersonFromCard = payload => ({type: SELECTED_PERSON, payload})
+
+export const GET_PEOPLE = "GET_PEOPLE"
+export const gqlGetPeople = () => ({type: GET_PEOPLE})

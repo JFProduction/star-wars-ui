@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import store from './store'
 
 import './App.css'
+import Rql from './Components/Rql';
 
 class App extends Component {
   render() {
@@ -18,7 +19,8 @@ class App extends Component {
         >
           <div>
             <h1 style={{marginBottom: 10}}>Star Wars Info</h1>
-            <Container />
+            {/* <Container /> */}
+            <Rql />
           </div>
         </div>
       </Provider>
