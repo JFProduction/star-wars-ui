@@ -17,6 +17,7 @@ import BB8 from './bb8.png'
 import Chewy from './chewy.png'
 import Jabba from './jabba.png'
 import QuiGon from './qui-gon.png'
+import Lando from './lando2.png'
 
 import IconCardviewActive from './Icon-Cardview-Active.svg'
 import IconCardview from './Icon-Cardview.svg'
@@ -39,7 +40,8 @@ const icons = {
   "BB8": BB8,
   "Chewbacca": Chewy,
   "Jabba Desilijic Tiure": Jabba,
-  "Qui-Gon Jinn": QuiGon
+  "Qui-Gon Jinn": QuiGon,
+  "Lando Calrissian": Lando,
 }
 
 export {

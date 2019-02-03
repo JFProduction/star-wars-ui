@@ -27,7 +27,6 @@ const queries = {
     allPeople {
       people {
         name,
-        gender,
         birthYear,
         height,
         homeworld {
@@ -38,7 +37,9 @@ const queries = {
         },
         filmConnection {
           films {
-            title
+            title,
+            episodeID,
+            releaseDate
           }
         }
       }
@@ -47,7 +48,7 @@ const queries = {
 }
 
 const client = new ApolloClient({
-  uri: "http://localhost:52499"
+  uri: "http://localhost:54391"
 });
 
 export {

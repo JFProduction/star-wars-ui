@@ -38,7 +38,7 @@ export function* getApiData(action) {
   }
 }
 
-export function* getPeople({type}) {
+export function* getPeopleGql({type}) {
   try {
     const resp = yield client.query({
       query: queries[type]
@@ -55,6 +55,6 @@ export default function* mySaga() {
   yield all([
     takeLatest(REQUEST_API_DATA, getApiData),
     takeLatest(REQUEST_PERSON_API, getApiData),
-    takeLatest(GET_PEOPLE, getPeople)
+    takeLatest(GET_PEOPLE, getPeopleGql)
   ])
 }

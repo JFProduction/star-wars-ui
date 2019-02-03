@@ -19,8 +19,8 @@ class App extends Component {
         >
           <div>
             <h1 style={{marginBottom: 10}}>Star Wars Info</h1>
-            {/* <Container /> */}
-            <Rql />
+            <Container />
+            {/* <Rql /> */}
           </div>
         </div>
       </Provider>
