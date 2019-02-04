@@ -1,6 +1,6 @@
 # This is a Star Wars UI Template
 
-![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![alt text](https://github.com/zachblizz/star-wars-ui/blob/feature/graphql/page.png)
 
 ## Installing and Running
 
