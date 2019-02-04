@@ -19,6 +19,7 @@ import Jabba from './jabba.png'
 import QuiGon from './qui-gon.png'
 import Lando from './lando2.png'
 
+import Planet from './planet.png'
 import IconCardviewActive from './Icon-Cardview-Active.svg'
 import IconCardview from './Icon-Cardview.svg'
 import IconListViewActive from './Icon-Listview-Active.svg'
@@ -54,5 +55,6 @@ export {
   IconListView,
   IconCardviewActive,
   IconCardview,
-  Films
+  Films,
+  Planet
 }

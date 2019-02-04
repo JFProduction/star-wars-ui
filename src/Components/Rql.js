@@ -5,23 +5,39 @@ import { connect } from "react-redux"
 import {
   icons, 
   Height, 
-  Gender, 
+  Planet, 
   Default, 
   Films
 } from '../assets/icons'
-import { gqlGetPeople } from '../sagas/actions'
+import { gqlGetPeopleCur } from '../sagas/actions'
 import MainCard from './containers/MainCard'
 import SimpleCardSubInfo from './presentations/SimpleCardSubInfo'
 
-const Rql = ({getPeople, people}) =>  {
+const Rql = ({ people, getPeopleCur}) =>  {
   useEffect(() => {
-    getPeople()
+    getPeopleCur()
   }, [])
-  
+
+  console.log(people)
   return (
     <React.Fragment>
+      <div>
+        <button 
+          onClick={() => getPeopleCur({
+            cursorBefore: people.pageInfo.endCursor,
+            cursorAfter: people.pageInfo.startCursor
+          })}
+        >
+          prev
+        </button>
+        <button 
+          onClick={() => getPeopleCur({cursorAfter: people.pageInfo.endCursor})}
+        >
+          after
+        </button>
+      </div>
     {
-      people && people.map(person => (
+      people && people.people && people.people.map(person => (
         <MainCard
           key={person.name}
           handleCardClick={() => () => console.log(person.name)}
@@ -54,9 +70,9 @@ const Rql = ({getPeople, people}) =>  {
                 <div>
                   <div className="card-sub-icon-wrapper">
                     <img
-                      title="Gender" 
-                      src={Gender} 
-                      alt="Gender"
+                      title="Planet" 
+                      src={Planet} 
+                      alt="Planet"
                       style={{width: 30, marginTop: 10}}
                     />
                   </div>
@@ -87,12 +103,10 @@ const Rql = ({getPeople, people}) =>  {
   )
 }
 
-const mapStateToProps = ({people}) => {
-  return {people}
-}
+const mapStateToProps = ({people}) => ({people}) 
 
-const mapDispatchToProps = dispatch => bindActionCreators({ 
-  getPeople: () => gqlGetPeople(),
+const mapDispatchToProps = dispatch => bindActionCreators({
+  getPeopleCur: payload => gqlGetPeopleCur(payload)
 }, dispatch)
 
 export default connect(

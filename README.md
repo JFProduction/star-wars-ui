@@ -1,5 +1,7 @@
 # This is a Star Wars UI Template
 
+![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+
 ## Installing and Running
 
 After cloning the repository, run the below command

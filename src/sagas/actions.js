@@ -21,3 +21,6 @@ export const selectPersonFromCard = payload => ({type: SELECTED_PERSON, payload}
 
 export const GET_PEOPLE = "GET_PEOPLE"
 export const gqlGetPeople = () => ({type: GET_PEOPLE})
+
+export const GET_PEOPLE_CURSOR = "GET_PEOPLE_CURSOR"
+export const gqlGetPeopleCur = payload => ({type: GET_PEOPLE_CURSOR, payload})

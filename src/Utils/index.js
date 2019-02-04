@@ -23,32 +23,64 @@ const Utils = {
 
 const queries = {
   GET_PEOPLE: gql`
-  {
-    allPeople {
-      people {
-        name,
-        birthYear,
-        height,
-        homeworld {
-          name
-        },
-        species {
-          name
-        },
-        filmConnection {
-          films {
-            title,
-            episodeID,
-            releaseDate
+    {
+      allPeople {
+        pageInfo {
+          endCursor
+        }
+        people {
+          name,
+          birthYear,
+          height,
+          homeworld {
+            name
+          },
+          species {
+            name
+          },
+          filmConnection {
+            films {
+              title,
+              episodeID,
+              releaseDate
+            }
           }
         }
       }
     }
-  }`
+  `,
+  GET_PEOPLE_CURSOR: gql`
+    query($cursorAfter:String, $cursorBefore:String) {
+      allPeople(first:10, after: $cursorAfter, before: $cursorBefore) {
+        pageInfo {
+          endCursor
+          startCursor
+        }
+        people {
+          name
+          id
+          height
+          homeworld {
+            name
+          }
+          species {
+            name
+          }
+          filmConnection {
+            films {
+              title,
+              episodeID,
+              releaseDate
+            }
+          }
+        }
+      }
+    }
+  `
 }
 
 const client = new ApolloClient({
-  uri: "http://localhost:54391"
+  uri: "http://localhost:58623"
 });
 
 export {
